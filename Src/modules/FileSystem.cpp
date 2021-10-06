@@ -23,11 +23,11 @@ FileSystem::FileSystem(int t_memory_unit, int t_directory) {
   directory = new Directory[t_directory] ;
   fatTable = new int[t_memory_unit];
   // fill the blank spaces with the deafault values
-  for (int index = 0; index < T_MEMORY_UNIT; index++) {
+  for (int index = 0; index < t_memory_unit; index++) {
     memoryUnit[index]= '_' ;
     fatTable[index]= FREE_BLOCK;
   }
-  for (int index = 0; index < T_DIRECTORY; index++) {
+  for (int index = 0; index < t_directory; index++) {
     directory[index].memoryBlock = FREE_BLOCK;
   }
 }
