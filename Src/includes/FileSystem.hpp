@@ -114,4 +114,55 @@ class FileSystem {
 
   /*Delete data from file*/
   void removeFileData(int index);
+  
+  
+  
+  
+  
+  
+  
+  /*GENERAL METHODS*/
+  
+  
+  
+  
+  
+  
+  /*METHODS TO CENSUS*/
+  
+  /*Read a file and adds all the voters information to the memory*/
+  void addDataFromFile(string fileDirection, string directoryName);
+  
+  
+  /*Add voter information to the memory*/
+  void addVoterInformation(string directoryName);
+  
+  
+  /*Asks if a voter already voted*/
+  bool votedAlready(string voterID, string directoryName); 
+  
+  
+  /*Returns the voter's information*/
+  string readVoterInformation(string voterID, string directoryName);
+  
+  
+  
+  
+  
+  
+  /*METHODS TO CANDIDATES*/
+  
+  
+  
+  
+  
+  
+  
+  
+  /*METHODS TO VOTES*/
+  
+  
+  
+  
+  
 };
