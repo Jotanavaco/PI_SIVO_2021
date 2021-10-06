@@ -19,11 +19,24 @@ const int END_CURSOR = -7;
 // contains the internal metadata of the file
 struct Directory {
   int memoryBlock;
-  string fileName;
+  string fileName; // Main variable. Need it to determine the directory nature
   time_t lastUpdateDate;
   bool isOpen;
   char user;
   string permission;
+  
+  /*CENSUS variables*/
+  
+  
+  
+  /*CANDIDATE variables*/
+  
+  
+  
+  /*VOTES variables*/
+  
+  
+  
 };
 
 class FileSystem {
@@ -33,6 +46,7 @@ class FileSystem {
   Directory *directory;
   int *fatTable;
   int memoryUnitIndex;
+  
   // permissions User arrays
   char userRead[ARRAY_SIZE] = {'B', 'C', 'D', 'E', 'F'};
   char userWrite[ARRAY_SIZE] = {'D', 'E', 'F'};
@@ -130,23 +144,23 @@ class FileSystem {
   /*METHODS TO CENSUS*/
   
   /*Creates a directory to storage a CENSUS file*/
-  void createCENSUS(string directoryName);
+  void createCENSUS(string directoryName, char user, string permission);
   
   
   /*Read a file and adds all the voters information to the memory*/
-  void addDataFromFile(string fileDirection, string directoryName);
+  void addDataFromFile(string fileDirection, string directoryName, char user, string permission);
   
   
   /*Add voter information to the memory*/
-  void addVoterInformation(string directoryName);
+  void addVoterInformation(string directoryName, char user, string permission);
   
   
   /*Asks if a voter already voted*/
-  bool votedAlready(string voterID, string directoryName); 
+  bool votedAlready(string voterID, string directoryName, char user, string permission); 
   
   
   /*Returns the voter's information*/
-  string readVoterInformation(string voterID, string directoryName);
+  string readVoterInformation(string voterID, string directoryName, char user, string permission);
   
   
   
@@ -156,7 +170,7 @@ class FileSystem {
   /*METHODS TO CANDIDATES*/
   
   /*Creates a directory to storage a CANDIDATE file*/
-  void createCandidate(string directoryName);
+  void createCandidate(string directoryName, char user, string permission);
   
   
   
@@ -167,7 +181,7 @@ class FileSystem {
   /*METHODS TO VOTES*/
   
   /*Creates a directory to storage a VOTES file*/
-  void createVotes(string directoryName);
+  void createVotes(string directoryName, char user, string permission);
   
   
   
