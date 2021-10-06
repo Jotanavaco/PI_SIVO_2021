@@ -16,23 +16,6 @@ FileSystem::FileSystem() {
 }
 
 
-/*Constructor that receives parameters*/
-FileSystem::FileSystem(int t_memory_unit, int t_directory) {
-  memoryUnitIndex = 0;
-  memoryUnit = new char[t_memory_unit];
-  directory = new Directory[t_directory] ;
-  fatTable = new int[t_memory_unit];
-  // fill the blank spaces with the deafault values
-  for (int index = 0; index < t_memory_unit; index++) {
-    memoryUnit[index]= '_' ;
-    fatTable[index]= FREE_BLOCK;
-  }
-  for (int index = 0; index < t_directory; index++) {
-    directory[index].memoryBlock = FREE_BLOCK;
-  }
-}
-
-
 // class default destructor
 FileSystem::~FileSystem() {
   delete[] memoryUnit;
