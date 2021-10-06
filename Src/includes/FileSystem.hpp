@@ -120,8 +120,7 @@ class FileSystem {
   
   
   
-  
-  /*GENERAL METHODS*/
+ 
   
   
   
@@ -129,6 +128,10 @@ class FileSystem {
   
   
   /*METHODS TO CENSUS*/
+  
+  /*Creates a directory to storage a CENSUS file*/
+  void createCENSUS(string directoryName);
+  
   
   /*Read a file and adds all the voters information to the memory*/
   void addDataFromFile(string fileDirection, string directoryName);
@@ -152,6 +155,8 @@ class FileSystem {
   
   /*METHODS TO CANDIDATES*/
   
+  /*Creates a directory to storage a CANDIDATE file*/
+  void createCandidate(string directoryName);
   
   
   
@@ -161,7 +166,8 @@ class FileSystem {
   
   /*METHODS TO VOTES*/
   
-  
+  /*Creates a directory to storage a VOTES file*/
+  void createVotes(string directoryName);
   
   
   
