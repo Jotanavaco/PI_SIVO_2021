@@ -445,10 +445,11 @@ void FileSystem::removeFileData(int index) {
   /*Read a file and adds all the voters information to the memory*/
   void FileSystem::addDataFromFile(string fileDirection, string directoryName, char user, string permission){
 
-    string lineData;
-	  fstream infile;
+    
+	string lineData;
+	fstream infile;
 
-	  infile.open (fileDirection, ios::in);
+	infile.open (fileDirection, ios::in);
         
       while(!infile.eof) // To get you all the lines.
       {
@@ -456,7 +457,7 @@ void FileSystem::removeFileData(int index) {
 	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
       }
 
-	  infile.close();
+	infile.close();
 
   }
 
