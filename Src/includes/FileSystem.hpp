@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include <fstream>      // std::fstream
 
 using namespace std;
 
