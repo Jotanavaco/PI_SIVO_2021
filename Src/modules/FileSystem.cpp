@@ -94,7 +94,7 @@ void FileSystem::open(string fileName) {
 
 /*if the file exists and it is open it search an empty 
 block in the fat memory to write the data*/
-void FileSystem::append(string fileName, char data, char user, string permission) {
+void FileSystem::append(string fileName, string data, char user, string permission) {
   bool havePermission = checkPermission(user, permission, 'W');
   int fileDirectoryIndex = existingName(fileName);
 
@@ -136,7 +136,7 @@ void FileSystem::append(string fileName, char data, char user, string permission
 }
 
 /*Writes to the file as indicated by the user (at the beginning or at the end)*/
-void FileSystem::write(string fileName, char data, int cursor, char user, string permission) {
+void FileSystem::write(string fileName, string data, int cursor, char user, string permission) {
   // check if the file exists and if it is open
   int fileDirectoryIndex = existingName(fileName);
   bool havePermission = checkPermission(user, permission, 'W');
