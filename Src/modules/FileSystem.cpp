@@ -22,6 +22,10 @@ FileSystem::FileSystem(int t_memory_unit, int t_directory) {
   memoryUnit = new string[t_memory_unit];
   directory = new Directory[t_directory] ;
   fatTable = new int[t_memory_unit];
+
+  T_DIRECTORY = t_directory;
+  T_MEMORY_UNIT = t_memory_unit;
+
   // fill the blank spaces with the deafault values
   for (int index = 0; index < t_memory_unit; index++) {
     memoryUnit[index]= '_' ;
@@ -435,7 +439,7 @@ void FileSystem::removeFileData(int index) {
     
     /*space from specified implementation to CENSUS directory if needed*/
 
-    
+
     create(directoryName, user, permission);
   }
   
@@ -445,11 +449,10 @@ void FileSystem::removeFileData(int index) {
   /*Read a file and adds all the voters information to the memory*/
   void FileSystem::addDataFromFile(string fileDirection, string directoryName, char user, string permission){
 
-    
-	string lineData;
-	fstream infile;
+    string lineData;
+	  fstream infile;
 
-	infile.open (fileDirection, ios::in);
+	  infile.open (fileDirection, ios::in);
         
       while(!infile.eof) // To get you all the lines.
       {
@@ -457,16 +460,34 @@ void FileSystem::removeFileData(int index) {
 	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
       }
 
-	infile.close();
+	  infile.close();
 
   }
 
   
   
   /*Add voter information to the memory*/
-  void FileSystem::addVoterInformation(string directoryName, char user, string permission){
+  void FileSystem::addVoterInformation(string directoryName, char user, string permission, 
+  string iDnum, string elecCode, string expDate, string junta, string name, string frstName, 
+  string scndName){
+    
+    string voterData = "";
+    
+    voterData += iDnum;
+    voterData += ",";
+    voterData += elecCode;
+    voterData += ",";
+    voterData += expDate;
+    voterData += ",";
+    voterData += junta;
+    voterData += ",";
+    voterData += name;
+    voterData += ",";
+    voterData += frstName;
+    voterData += ",";
+    voterData += scndName;
 
-
+    append(fileName,voterData,user,permission);
   }
   
   
