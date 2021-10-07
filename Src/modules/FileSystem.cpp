@@ -432,8 +432,11 @@ void FileSystem::removeFileData(int index) {
   /*Creates a directory to storage a CENSUS file*/
   /*directoryName is the txt directory*/
   void FileSystem::createCENSUS(string directoryName, char user, string permission){
+    
+    /*space from specified implementation to CENSUS directory if needed*/
 
-
+    
+    create(directoryName, user, permission);
   }
   
 
