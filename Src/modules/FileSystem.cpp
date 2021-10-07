@@ -2,7 +2,7 @@
 
 FileSystem::FileSystem() {
   memoryUnitIndex = 0;
-  memoryUnit = new char[T_MEMORY_UNIT];
+  memoryUnit = new string[T_MEMORY_UNIT];
   directory = new Directory[T_DIRECTORY] ;
   fatTable = new int[T_MEMORY_UNIT];
   // fill the blank spaces with the deafault values
@@ -19,7 +19,7 @@ FileSystem::FileSystem() {
 /*Constructor that receives parameters*/
 FileSystem::FileSystem(int t_memory_unit, int t_directory) {
   memoryUnitIndex = 0;
-  memoryUnit = new char[t_memory_unit];
+  memoryUnit = new string[t_memory_unit];
   directory = new Directory[t_directory] ;
   fatTable = new int[t_memory_unit];
   // fill the blank spaces with the deafault values
@@ -182,7 +182,7 @@ void FileSystem::remove(string fileName, char user, string permission) {
 
 /* If file exists and its open then reads all the data*/
 string FileSystem::read(string fileName, char user, string permission) { 
-  string allData;
+  string allData = "";
   int index;
   bool next = true;
 
@@ -197,8 +197,10 @@ string FileSystem::read(string fileName, char user, string permission) {
       
       if (fatTable[index] != FREE_BLOCK && fatTable[index] != RESERVED_BLOCK) {      
         while(next){
-          allData.push_back(memoryUnit[index]);
-          allData.push_back(',');
+          allData += memoryUnit[index];
+          allData += ",";
+          //allData.push_back(memoryUnit[index]);
+          //allData.push_back(',');
           index = fatTable[index];
 
           if(index == END_OF_FILE){
