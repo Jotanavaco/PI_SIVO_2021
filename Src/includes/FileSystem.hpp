@@ -42,7 +42,7 @@ struct Directory {
 class FileSystem {
   // class atributes
   private:
-  string *memoryUnit; //we need a string to manipulate different types of data easily
+  char *memoryUnit; //we need a string to manipulate different types of data easily
   Directory *directory;
   int *fatTable;
   int memoryUnitIndex;
