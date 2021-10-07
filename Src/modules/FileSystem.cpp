@@ -427,3 +427,39 @@ void FileSystem::removeFileData(int index) {
     fatTable[index] = FREE_BLOCK;
   }
 }
+
+
+  /*Creates a directory to storage a CENSUS file*/
+  void FileSystem::createCENSUS(string directoryName, char user, string permission){
+
+
+  }
+  
+
+  /*Read a file and adds all the voters information to the memory*/
+  void FileSystem::addDataFromFile(string fileDirection, string directoryName, char user, string permission){
+
+
+  }
+
+  
+  
+  /*Add voter information to the memory*/
+  void FileSystem::addVoterInformation(string directoryName, char user, string permission){
+
+
+  }
+  
+  
+  /*Asks if a voter already voted*/
+  bool FileSystem::votedAlready(string voterID, string directoryName, char user, string permission){
+
+
+  } 
+  
+  
+  /*Returns the voter's information*/
+  string FileSystem::readVoterInformation(string voterID, string directoryName, char user, string permission){
+
+    
+  }
