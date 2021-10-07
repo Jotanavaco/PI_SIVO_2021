@@ -430,11 +430,25 @@ void FileSystem::removeFileData(int index) {
 
 
   /*Creates a directory to storage a CENSUS file*/
+  /*directoryName is the txt directory*/
   void FileSystem::createCENSUS(string directoryName, char user, string permission){
 
+    string lineData;
+	  fstream infile;
 
+	  infile.open (directoryName, ios::in);
+        
+      while(!infile.eof) // To get you all the lines.
+      {
+	      getline(infile,lineData); // Saves the line in lineData.
+	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
+      }
+
+	  infile.close();
   }
   
+
+
 
   /*Read a file and adds all the voters information to the memory*/
   void FileSystem::addDataFromFile(string fileDirection, string directoryName, char user, string permission){
@@ -461,5 +475,5 @@ void FileSystem::removeFileData(int index) {
   /*Returns the voter's information*/
   string FileSystem::readVoterInformation(string voterID, string directoryName, char user, string permission){
 
-    
+
   }
