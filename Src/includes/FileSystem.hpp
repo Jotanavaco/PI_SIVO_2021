@@ -158,7 +158,8 @@ class FileSystem {
   
   
   /*Add voter information to the memory*/
-  void addVoterInformation(string directoryName, char user, string permission);
+  void addVoterInformation(string directoryName, char user, string permission, string iDnum,
+  string elecCode, string expDate, string junta, string name, string frstName, string scndName);
   
   
   /*Asks if a voter already voted*/
