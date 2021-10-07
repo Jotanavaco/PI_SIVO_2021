@@ -457,6 +457,8 @@ void FileSystem::removeFileData(int index) {
       while(!infile.eof) // To get you all the lines.
       {
 	      getline(infile,lineData); // Saves the line in lineData.
+	      lineData += ",";
+	      lineData += "f"; // The voter hasn't voted yet
 	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
       }
 
@@ -499,7 +501,7 @@ void FileSystem::removeFileData(int index) {
   
   
   /*Returns the voter's information*/
-  string FileSystem::readVoterInformation(string voterID, string directoryName, char user, string permission){
+  string FileSystem::searchVoterInformation(string voterID, string directoryName, char user, string permission){
 
 
   }
