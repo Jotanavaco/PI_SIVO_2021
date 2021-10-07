@@ -457,8 +457,8 @@ void FileSystem::removeFileData(int index) {
       while(!infile.eof) // To get you all the lines.
       {
 	      getline(infile,lineData); // Saves the line in lineData.
-	      lineData += ",";
-	      lineData += "f"; // The voter hasn't voted yet
+        lineData += ",";
+        lineData += "f"; // The voter hasn't voted yet
 	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
       }
 
@@ -502,6 +502,31 @@ void FileSystem::removeFileData(int index) {
   
   /*Returns the voter's information*/
   string FileSystem::searchVoterInformation(string voterID, string directoryName, char user, string permission){
+      
+    bool havePermission = checkPermission(user, permission, 'R');
+    int fileDirectoryIndex = existingName(directoryName);
+
+    if(havePermission) {
+    // check if the file exists and if it is open
+    if (fileDirectoryIndex != BLOCK_NOT_FOUND 
+      && directory[fileDirectoryIndex].isOpen == true) {
+        
+        bool find = false;
+        int index = directory[fileDirectoryIndex].memoryBlock;
+
+        while (!find && fatTable[indexs] != END_OF_FILE) {
+
+
+        }
+
+        
+      }
+    } else if(fileDirectoryIndex == BLOCK_NOT_FOUND) {
+      cout << "\nFile " + fileName + " not found\n";
+    } else {
+      cout << "\nThe file " + fileName + " is not open\n";
+    }
+  }
 
 
   }
