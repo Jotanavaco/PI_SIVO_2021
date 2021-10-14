@@ -16,30 +16,6 @@ FileSystem::FileSystem() {
 }
 
 
-<<<<<<< HEAD
-/*Constructor that receives parameters*/
-FileSystem::FileSystem(int t_memory_unit, int t_directory) {
-  memoryUnitIndex = 0;
-  memoryUnit = new string[t_memory_unit];
-  directory = new Directory[t_directory] ;
-  fatTable = new int[t_memory_unit];
-
-  T_DIRECTORY = t_directory;
-  T_MEMORY_UNIT = t_memory_unit;
-
-  // fill the blank spaces with the deafault values
-  for (int index = 0; index < t_memory_unit; index++) {
-    memoryUnit[index]= '_' ;
-    fatTable[index]= FREE_BLOCK;
-  }
-  for (int index = 0; index < t_directory; index++) {
-    directory[index].memoryBlock = FREE_BLOCK;
-  }
-}
-
-
-=======
->>>>>>> master
 // class default destructor
 FileSystem::~FileSystem() {
   delete[] memoryUnit;
@@ -101,9 +77,6 @@ void FileSystem::open(string fileName) {
 
 /*if the file exists and it is open it search an empty 
 block in the fat memory to write the data*/
-<<<<<<< HEAD
-void FileSystem::append(string fileName, string data, char user, string permission) {
-=======
 void FileSystem::append(string candidateFile, string votesFile, char data, char user, string permission) {
   bool havePermission = checkPermission(user, permission, 'W');
   int candidateDirectoryIndex = existingName(candidateFile);
@@ -169,7 +142,6 @@ void FileSystem::appendVote(int directoryIndex, char data) {
 
 void FileSystem::censusAppend(string fileName, string data
   , char user, string permission) {
->>>>>>> master
   bool havePermission = checkPermission(user, permission, 'W');
   int fileDirectoryIndex = existingName(fileName);
 
@@ -211,12 +183,8 @@ void FileSystem::censusAppend(string fileName, string data
 }
 
 /*Writes to the file as indicated by the user (at the beginning or at the end)*/
-<<<<<<< HEAD
-void FileSystem::write(string fileName, string data, int cursor, char user, string permission) {
-=======
 void FileSystem::write(string fileName, string votesFile, char data, int cursor
 , char user, string permission) {
->>>>>>> master
   // check if the file exists and if it is open
   int fileDirectoryIndex = existingName(fileName);
   bool havePermission = checkPermission(user, permission, 'W');
@@ -263,13 +231,8 @@ void FileSystem::remove(string fileName, char user, string permission) {
 }
 
 /* If file exists and its open then reads all the data*/
-<<<<<<< HEAD
-string FileSystem::read(string fileName, char user, string permission) { 
-  string allData = "";
-=======
 stringstream FileSystem::censusRead(string fileName, char user, string permission) { 
   stringstream returnData;
->>>>>>> master
   int index;
   bool next = true;
 
@@ -284,15 +247,8 @@ stringstream FileSystem::censusRead(string fileName, char user, string permissio
       
       if (fatTable[index] != FREE_BLOCK && fatTable[index] != RESERVED_BLOCK) {      
         while(next){
-<<<<<<< HEAD
-          allData += memoryUnit[index];
-          allData += ",";
-          //allData.push_back(memoryUnit[index]);
-          //allData.push_back(',');
-=======
           returnData << memoryUnit[index];
           returnData << "\n";
->>>>>>> master
           index = fatTable[index];
 
           if(index == END_OF_FILE){
@@ -577,106 +533,6 @@ void FileSystem::removeFileData(int index) {
   }
 }
 
-<<<<<<< HEAD
-
-  /*Creates a directory to storage a CENSUS file*/
-  /*directoryName is the txt directory*/
-  void FileSystem::createCENSUS(string directoryName, char user, string permission){
-    
-    /*space from specified implementation to CENSUS directory if needed*/
-
-
-    create(directoryName, user, permission);
-  }
-  
-
-
-
-  /*Read a file and adds all the voters information to the memory*/
-  void FileSystem::addDataFromFile(string fileDirection, string directoryName, char user, string permission){
-
-    string lineData;
-	  fstream infile;
-
-	  infile.open (fileDirection, ios::in);
-        
-      while(!infile.eof) // To get you all the lines.
-      {
-	      getline(infile,lineData); // Saves the line in lineData.
-        lineData += ",";
-        lineData += "f"; // The voter hasn't voted yet
-	      append(directoryName, lineData, user, permission); // Saves the voter in CENSUSdirectory.
-      }
-
-	  infile.close();
-
-  }
-
-  
-  
-  /*Add voter information to the memory*/
-  void FileSystem::addVoterInformation(string directoryName, char user, string permission, 
-  string iDnum, string elecCode, string expDate, string junta, string name, string frstName, 
-  string scndName){
-    
-    string voterData = "";
-    
-    voterData += iDnum;
-    voterData += ",";
-    voterData += elecCode;
-    voterData += ",";
-    voterData += expDate;
-    voterData += ",";
-    voterData += junta;
-    voterData += ",";
-    voterData += name;
-    voterData += ",";
-    voterData += frstName;
-    voterData += ",";
-    voterData += scndName;
-
-    append(fileName,voterData,user,permission);
-  }
-  
-  
-  /*Asks if a voter already voted*/
-  bool FileSystem::votedAlready(string voterID, string directoryName, char user, string permission){
-
-
-  } 
-  
-  
-  /*Returns the voter's information*/
-  string FileSystem::searchVoterInformation(string voterID, string directoryName, char user, string permission){
-      
-    bool havePermission = checkPermission(user, permission, 'R');
-    int fileDirectoryIndex = existingName(directoryName);
-
-    if(havePermission) {
-    // check if the file exists and if it is open
-    if (fileDirectoryIndex != BLOCK_NOT_FOUND 
-      && directory[fileDirectoryIndex].isOpen == true) {
-        
-        bool find = false;
-        int index = directory[fileDirectoryIndex].memoryBlock;
-
-        while (!find && fatTable[indexs] != END_OF_FILE) {
-
-
-        }
-
-        
-      }
-    } else if(fileDirectoryIndex == BLOCK_NOT_FOUND) {
-      cout << "\nFile " + fileName + " not found\n";
-    } else {
-      cout << "\nThe file " + fileName + " is not open\n";
-    }
-  }
-
-
-  }
-=======
 /* Read a file and adds all the voters information to the memory */
 void FileSystem::addDataFromCensus(string fileDirection, string fileName
   , char user, string permission){
@@ -709,4 +565,3 @@ void FileSystem::addDataFromCensus(string fileDirection, string fileName
     cout << "File does not exists\n";
   }
 }
->>>>>>> master

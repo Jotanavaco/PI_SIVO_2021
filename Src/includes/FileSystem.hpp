@@ -2,13 +2,9 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
-<<<<<<< HEAD
-#include <fstream>      // std::fstream
-=======
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
->>>>>>> master
 
 using namespace std;
 
@@ -78,12 +74,6 @@ class FileSystem {
 
   /*if the file exists and it is open it search an empty 
   block in the fat memory to write the data*/
-<<<<<<< HEAD
-  void append(string fileName, string data, char user, string permission);
-  
-  /*Writes to the file as indicated by the user (at the beginning or at the end)*/
-  void write(string fileName, string data, int cursor, char user, string permission);
-=======
   void append(string candidateFile, string votesFile, char data, char user, string permission);
  
   /*if the file exists and it is open it search an empty 
@@ -95,7 +85,6 @@ class FileSystem {
   
   /*Writes to the file as indicated by the user (at the beginning or at the end)*/
   void write(string fileName, string votesFile, char data, int cursor, char user, string permission);
->>>>>>> master
 
   /*Delete the indicated file*/
   void remove(string fileName, char user, string permission);
@@ -148,67 +137,7 @@ class FileSystem {
   /*Delete data from file*/
   void removeFileData(int index);
   
-<<<<<<< HEAD
-  
-  
-  
-  
-  
- 
-  
-  
-  
-  
-  
-  
-  /*METHODS TO CENSUS*/
-  
-  /*Creates a directory to storage a CENSUS file*/
-  void createCENSUS(string directoryName, char user, string permission);
-  
-  
-  /*Read a file and adds all the voters information to the memory*/
-  void addDataFromFile(string fileDirection, string directoryName, char user, string permission);
-  
-  
-  /*Add voter information to the memory*/
-  void addVoterInformation(string directoryName, char user, string permission, string iDnum,
-  string elecCode, string expDate, string junta, string name, string frstName, string scndName);
-  
-  
-  /*Asks if a voter already voted*/
-  bool votedAlready(string voterID, string directoryName, char user, string permission); 
-  
-  
-  /*Returns the voter's information*/
-  string readVoterInformation(string voterID, string directoryName, char user, string permission);
-  
-  
-  
-  
-  
-  
-  /*METHODS TO CANDIDATES*/
-  
-  /*Creates a directory to storage a CANDIDATE file*/
-  void createCandidate(string directoryName, char user, string permission);
-  
-  
-  
-  
-  
-  
-  
-  /*METHODS TO VOTES*/
-  
-  /*Creates a directory to storage a VOTES file*/
-  void createVotes(string directoryName, char user, string permission);
-  
-  
-  
-=======
   /* Read a file and adds all the voters information to the memory */
   void addDataFromCensus(string fileDirection, string fileName
   , char user, string permission);
->>>>>>> master
 };
