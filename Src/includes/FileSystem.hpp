@@ -2,12 +2,18 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+<<<<<<< HEAD
 #include <fstream>      // std::fstream
+=======
+#include <fstream>
+#include <sstream>
+#include <cstdlib>
+>>>>>>> master
 
 using namespace std;
 
-const int T_DIRECTORY = 3;
-const int T_MEMORY_UNIT = 16;
+const int T_DIRECTORY = 6;
+const int T_MEMORY_UNIT = 200;
 const int ARRAY_SIZE = 6;
 const int END_OF_FILE = -1;
 const int FREE_BLOCK = -2;
@@ -25,19 +31,6 @@ struct Directory {
   bool isOpen;
   char user;
   string permission;
-  
-  /*CENSUS variables*/
-  
-  
-  
-  /*CANDIDATE variables*/
-  
-  
-  
-  /*VOTES variables*/
-  
-  
-  
 };
 
 class FileSystem {
@@ -77,7 +70,6 @@ class FileSystem {
   ~FileSystem();
 
   // basic class methods
-
   // Check if the file already exists, if not create it if you have the permission
   void create(string fileName, char user, string permission);
 
@@ -86,16 +78,33 @@ class FileSystem {
 
   /*if the file exists and it is open it search an empty 
   block in the fat memory to write the data*/
+<<<<<<< HEAD
   void append(string fileName, string data, char user, string permission);
   
   /*Writes to the file as indicated by the user (at the beginning or at the end)*/
   void write(string fileName, string data, int cursor, char user, string permission);
+=======
+  void append(string candidateFile, string votesFile, char data, char user, string permission);
+ 
+  /*if the file exists and it is open it search an empty 
+  block in the fat memory to write the data*/
+  void censusAppend(string fileName, string lineData, char user, string permission);
+
+  /*Add the vote to the vote file*/
+  void appendVote(int directoryIndex, char data); 
+  
+  /*Writes to the file as indicated by the user (at the beginning or at the end)*/
+  void write(string fileName, string votesFile, char data, int cursor, char user, string permission);
+>>>>>>> master
 
   /*Delete the indicated file*/
   void remove(string fileName, char user, string permission);
 
   /* If file exists and its open then reads all the data*/
-  string read(string fileName, char user, string permission);
+  stringstream censusRead(string fileName, char user, string permission);
+
+  /*returns the vote count*/
+  int read(string fileName, char user, string permission);
   
   //if file exists and its open then it close 
   void close(string fileName);
@@ -112,6 +121,10 @@ class FileSystem {
   /* returns the index of a free block of memory in the fatTable,
     otherwise returns FREE_MEMORY_NOT_FOUND*/
   int searchFreeFatBlock();
+  
+  /*returns two indexes of a block of free memory in fatTable,
+    otherwise it returns FREE_MEMORY_NOT_FOUND*/
+  bool searchTwoFreeFatBlock();
 
   /* returns the index of a free block of memory in the directory,
     otherwise returns FREE_MEMORY_NOT_FOUND*/
@@ -135,6 +148,7 @@ class FileSystem {
   /*Delete data from file*/
   void removeFileData(int index);
   
+<<<<<<< HEAD
   
   
   
@@ -192,4 +206,9 @@ class FileSystem {
   
   
   
+=======
+  /* Read a file and adds all the voters information to the memory */
+  void addDataFromCensus(string fileDirection, string fileName
+  , char user, string permission);
+>>>>>>> master
 };
