@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Src/includes/FileSystem.hpp"
 #include "Src/includes/Candidates.hpp"
+#include "Src/includes/Votes.hpp"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int main() {
   FileSystem *fileSystem = new FileSystem();
   Candidates *candidates = new Candidates();
   //Census *census = new Census();
-  //Votes *votes = new Votes();
+  Votes *votes = new Votes();
 
 
   // Creacion de archivo del padrón
@@ -39,8 +40,8 @@ int main() {
 
 
   // Creación archivo de votos
-  fileSystem->create("GeneralVotes", 'D', "group"); 
-  //votes->votesCreate(fileSystem, "GeneralVotes", 'D', "group")
+  //fileSystem->create("GeneralVotes", 'D', "group"); 
+  votes->votesCreate(fileSystem, "GeneralVotes", 'D', "group");
 
 
   //fileSystem->create("JuanitoMora", 'D', "group");
@@ -69,17 +70,17 @@ int main() {
   // Escritura de votos
   //fileSystem->append("JuanitoMora", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
   //fileSystem->append("JuanitoMora", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
   //fileSystem->write("JuanitoMora", "1", -7, 'D', "group");
   candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
 
@@ -87,34 +88,36 @@ int main() {
 
   //fileSystem->append("EdgarSilva", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
   //fileSystem->append("EdgarSilva", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
   //fileSystem->append("EdgarSilva", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
   //fileSystem->write("EdgarSilva", "1", -7, 'D', "group");
   candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
 
 
 
 
   //fileSystem->append("MaritoMortadela", "1", 'D', "group");
   candidates->candidateAppendVote(fileSystem, "MaritoMortadela", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+  votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
 
 
 
 
   // Lectura de votos
-  int votosGenerales = fileSystem->fileCount("GeneralVotes", 'D', "group");
-  // int votosGenerales = votes->votesCount("GeneralVotes", 'D', "group");
+  //int votosGenerales = fileSystem->fileCount("GeneralVotes", 'D', "group");
+  int votosGenerales = votes->votesCount(fileSystem, "GeneralVotes", 'D', "group");
   cout << "\nCantidad votos Generales: " << votosGenerales << endl;
 
 

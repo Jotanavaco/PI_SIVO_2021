@@ -3,26 +3,30 @@
 #include <ctime>
 #include <cstdlib>
 
+#include "../includes/FileSystem.hpp"
+
 using namespace std;
 
 class Votes{
 
+    private:
     //class attributes
 
 
-    //Class defaul constructor
+    public:
+    //Class default constructor
     Votes();
 
     //Class default destructor
     ~Votes();
 
-    //Create a file of candidates in the filesystem
-    void votesCreate(string votesFileName, char user, string permission);
+    //Create a file of votes in the filesystem
+    void votesCreate(FileSystem* fileSystem, string votesFileName, char user, string permission);
 
-    //Add a candidate in the candidates file
-    void voteAppend(string voteFile, char user, string permission);
+    //Add a vote in the votes file
+    void voteAppend(FileSystem* fileSystem, string voteFile, string data, char user, string permission);
 
     //Gets total count of votes in the file 
-    int votesCount(string votesFileName, char user, string permission);
+    int votesCount(FileSystem* fileSystem, string votesFileName, char user, string permission);
 
 };
