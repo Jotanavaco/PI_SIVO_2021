@@ -3,12 +3,19 @@
 #include <ctime>
 #include <cstdlib>
 
+#include "../includes/FileSystem.hpp"
+
 using namespace std;
 
 class Candidates{
 
+    private:
     //class attributes
 
+
+
+
+    public:
 
     //Class defaul constructor
     Candidates();
@@ -16,10 +23,13 @@ class Candidates{
     //Class default destructor
     ~Candidates();
 
-    //Create a file of candidates in the filesystem
-    void candidatesCreate(string candidatesFileName, char user, string permission);
+    //Create a file that represent a candidate in the filesystem
+    void candidateCreate(FileSystem* fileSystem, string candidatesFileName, char user, string permission);
 
-    //Add a candidate in the candidates file
-    void candidateAppend(string candidateFile, char user, string permission);
+    //Register a vote in the candidate file
+    void candidateAppendVote(FileSystem* fileSystem, string candidateFile, char data, char user, string permission);
+
+    //Get total count of votes for this candidate
+    int candidateVoteCount(FileSystem* fileSystem, string candidateFile, char user, string permission);
 
 };
