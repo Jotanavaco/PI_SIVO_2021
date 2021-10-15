@@ -72,19 +72,31 @@ class FileSystem {
   /*if the file exists and it is not open, the methods will open it*/
   void open(string fileName);
 
-  /*if the file exists and it is open it search an empty 
-  block in the fat memory to write the data*/
-  void append(string candidateFile, string votesFile, char data, char user, string permission);
- 
-  /*if the file exists and it is open it search an empty 
-  block in the fat memory to write the data*/
-  void censusAppend(string fileName, string lineData, char user, string permission);
 
-  /*Add the vote to the vote file*/
+/*
+  //if the file exists and it is open it search an empty 
+  //block in the fat memory to write the data
+  void append(string candidateFile, string votesFile, char data, char user, string permission);
+*/
+
+
+
+
+  /*if the file exists and it is open it search an empty 
+  block in the fat memory to write the data*/
+  void append(string fileName, string data, char user, string permission);
+
+
+
+
+/*
+  //Add the vote to the vote file
   void appendVote(int directoryIndex, char data); 
-  
+*/
+
+
   /*Writes to the file as indicated by the user (at the beginning or at the end)*/
-  void write(string fileName, string votesFile, char data, int cursor, char user, string permission);
+  void write(string fileName, string data, int cursor, char user, string permission);
 
   /*Delete the indicated file*/
   void remove(string fileName, char user, string permission);

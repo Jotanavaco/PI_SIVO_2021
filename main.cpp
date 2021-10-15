@@ -27,7 +27,7 @@ int main() {
 
   // Actualización del padrón (escritura manual)
   /*Formato de ingreso; 101710541,301022, ,20300618,00000,DANIEL                        ,ROBLES                    ,VENEGAS              .f*/
-  fileSystem->censusAppend("Census", "Padron de prueba", 'D', "group");
+  fileSystem->append("Census", "Padron de prueba", 'D', "group");
   //census->censusAppend(fileSystem, "Census", "Padron de prueba", 'D', "group");
 
 
@@ -67,47 +67,47 @@ int main() {
 
 
   // Escritura de votos
-  fileSystem->append("JuanitoMora", "GeneralVotes", '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
+  fileSystem->append("JuanitoMora", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
-  fileSystem->append("JuanitoMora", "GeneralVotes", '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
+  fileSystem->append("JuanitoMora", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
-  fileSystem->write("JuanitoMora", "GeneralVotes", '1', -7, 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
-
-
-
-
-
-  fileSystem->append("EdgarSilva", "GeneralVotes", '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
-
-
-  fileSystem->append("EdgarSilva", "GeneralVotes" , '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
-
-  fileSystem->append("EdgarSilva", "GeneralVotes", '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
-
-  fileSystem->write("EdgarSilva", "GeneralVotes", '1', -7, 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
+  fileSystem->write("JuanitoMora", "1", -7, 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
 
 
-  fileSystem->append("MaritoMortadela", "GeneralVotes", '1', 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "MaritoMortadela", '1', 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", '1', 'D', "group");
+
+  fileSystem->append("EdgarSilva", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+
+  fileSystem->append("EdgarSilva", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+  fileSystem->append("EdgarSilva", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+  fileSystem->write("EdgarSilva", "1", -7, 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+
+
+
+  fileSystem->append("MaritoMortadela", "1", 'D', "group");
+  //candidate->candidateAppendVote(fileSystem, "MaritoMortadela", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
 

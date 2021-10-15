@@ -75,8 +75,11 @@ void FileSystem::open(string fileName) {
   }
 }
 
-/*if the file exists and it is open it search an empty 
-block in the fat memory to write the data*/
+
+
+/*
+//if the file exists and it is open it search an empty 
+//block in the fat memory to write the data
 void FileSystem::append(string candidateFile, string votesFile, char data, char user, string permission) {
   bool havePermission = checkPermission(user, permission, 'W');
   int candidateDirectoryIndex = existingName(candidateFile);
@@ -110,7 +113,11 @@ void FileSystem::append(string candidateFile, string votesFile, char data, char 
     cout << "Invalid data\n";
   }
 }
+*/
 
+
+
+/*
 void FileSystem::appendVote(int directoryIndex, char data) {
   int counter = 0;
   int index = directory[directoryIndex].memoryBlock;
@@ -139,7 +146,10 @@ void FileSystem::appendVote(int directoryIndex, char data) {
     }
   }
 }
+*/
 
+
+/*
 void FileSystem::censusAppend(string fileName, string data
   , char user, string permission) {
   bool havePermission = checkPermission(user, permission, 'W');
@@ -181,18 +191,66 @@ void FileSystem::censusAppend(string fileName, string data
     }
   }
 }
+*/
+
+
+void FileSystem::append(string fileName, string data
+  , char user, string permission) {
+  bool havePermission = checkPermission(user, permission, 'W');
+  int fileDirectoryIndex = existingName(fileName);
+
+  if(havePermission) {
+    // check if the file exists and if it is open
+    if (fileDirectoryIndex != BLOCK_NOT_FOUND 
+      && directory[fileDirectoryIndex].isOpen == true) {
+        int counter = 0;
+        int index = directory[fileDirectoryIndex].memoryBlock;
+        // if it is the first data of the file
+        if (fatTable[index] == FREE_BLOCK || fatTable[index] == RESERVED_BLOCK) {
+          memoryUnit[index] = data;
+          fatTable[index] = END_OF_FILE;
+        } else {
+          // if it is not the firs data of the file
+          while (counter < T_MEMORY_UNIT) {
+            if (fatTable[index] != END_OF_FILE) {
+              index = fatTable[index];
+            } else {
+              int freeBlockIndex = searchFreeFatBlock();
+              if (freeBlockIndex != FREE_MEMORY_NOT_FOUND) {
+                fatTable[index] = freeBlockIndex;
+                memoryUnit[freeBlockIndex] = data;
+                fatTable[freeBlockIndex] = END_OF_FILE;
+                counter = T_MEMORY_UNIT;
+              } else {
+                cout << "\nNo free memory found for " <<  data << " in fat memory\n";
+              }
+            }
+            counter++;
+          }
+        }
+    } else if(fileDirectoryIndex == BLOCK_NOT_FOUND) {
+      cout << "\nFile " + fileName + " not found\n";
+    } else {
+      cout << "\nThe file " + fileName + " is not open\n";
+    }
+  }
+}
+
+
+
+
 
 /*Writes to the file as indicated by the user (at the beginning or at the end)*/
-void FileSystem::write(string fileName, string votesFile, char data, int cursor
+void FileSystem::write(string fileName, string data, int cursor
 , char user, string permission) {
   // check if the file exists and if it is open
   int fileDirectoryIndex = existingName(fileName);
   bool havePermission = checkPermission(user, permission, 'W');
 
-  if (data == '1') {
+  if (data == "1") {
     if(havePermission) {
       if (cursor == END_CURSOR) {
-        append(fileName, votesFile, data, user, permission);
+        append(fileName, data, user, permission);
       } else if(cursor ==  BEGINNING_CURSOR) {
         int oldFileIndex = directory[fileDirectoryIndex].memoryBlock;
         int newFileIndex = searchFreeFatBlock();
@@ -552,7 +610,7 @@ void FileSystem::addDataFromCensus(string fileDirection, string fileName
           lineData += ",";
           lineData += "f"; // The voter hasn't voted yet
           // Saves the voter in CENSUSdirectory.
-          censusAppend(fileName, lineData, user, permission); 
+          append(fileName, lineData, user, permission); 
         }
         inFile.close();
       } else {
