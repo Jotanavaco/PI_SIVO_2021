@@ -104,8 +104,8 @@ class FileSystem {
   /* If file exists and its open then reads all the data*/
   stringstream censusRead(string fileName, char user, string permission);
 
-  /*returns the vote count*/
-  int read(string fileName, char user, string permission);
+  /*returns count of elements in the file*/
+  int fileCount(string fileName, char user, string permission);
   
   //if file exists and its open then it close 
   void close(string fileName);

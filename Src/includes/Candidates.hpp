@@ -27,7 +27,7 @@ class Candidates{
     void candidateCreate(FileSystem* fileSystem, string candidatesFileName, char user, string permission);
 
     //Register a vote in the candidate file
-    void candidateAppendVote(FileSystem* fileSystem, string candidateFile, char data, char user, string permission);
+    void candidateAppendVote(FileSystem* fileSystem, string candidateFile, string data, char user, string permission);
 
     //Get total count of votes for this candidate
     int candidateVoteCount(FileSystem* fileSystem, string candidateFile, char user, string permission);

@@ -321,9 +321,9 @@ stringstream FileSystem::censusRead(string fileName, char user, string permissio
   return returnData;
 }
 
-/* If file exists and its open then reads all the data*/
-int FileSystem::read(string fileName, char user, string permission) { 
-  int voteCounter = 0;
+/* If file exists and its open then counts all the data*/
+int FileSystem::fileCount(string fileName, char user, string permission) { 
+  int fileCounter = 0;
   int index;
   bool next = true;
 
@@ -338,7 +338,8 @@ int FileSystem::read(string fileName, char user, string permission) {
       
       if (fatTable[index] != FREE_BLOCK && fatTable[index] != RESERVED_BLOCK) {      
         while(next){
-          voteCounter += stoi(memoryUnit[index]); 
+          //voteCounter += stoi(memoryUnit[index]);
+          fileCounter += 1; 
           index = fatTable[index];
 
           if(index == END_OF_FILE){
@@ -348,7 +349,7 @@ int FileSystem::read(string fileName, char user, string permission) {
       }
     } 
   }
-  return voteCounter;
+  return fileCounter;
 }
 
 //if file exists and its open then it close 

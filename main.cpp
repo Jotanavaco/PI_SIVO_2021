@@ -67,69 +67,69 @@ int main() {
 
 
   // Escritura de votos
-  fileSystem->append("JuanitoMora", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
+  //fileSystem->append("JuanitoMora", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
   //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
-  fileSystem->append("JuanitoMora", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
+  //fileSystem->append("JuanitoMora", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
   //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
-  fileSystem->write("JuanitoMora", "1", -7, 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
-
-
-
-
-
-  fileSystem->append("EdgarSilva", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
-
-
-  fileSystem->append("EdgarSilva", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
-
-  fileSystem->append("EdgarSilva", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
-  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
-
-  fileSystem->write("EdgarSilva", "1", -7, 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //fileSystem->write("JuanitoMora", "1", -7, 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "JuanitoMora", "1", 'D', "group");
   //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
 
 
-  fileSystem->append("MaritoMortadela", "1", 'D', "group");
-  //candidate->candidateAppendVote(fileSystem, "MaritoMortadela", "1", 'D', "group");
+
+  //fileSystem->append("EdgarSilva", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+
+  //fileSystem->append("EdgarSilva", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+  //fileSystem->append("EdgarSilva", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+  //fileSystem->write("EdgarSilva", "1", -7, 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "EdgarSilva", "1", 'D', "group");
+  //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
+
+
+
+
+  //fileSystem->append("MaritoMortadela", "1", 'D', "group");
+  candidates->candidateAppendVote(fileSystem, "MaritoMortadela", "1", 'D', "group");
   //votes->voteAppend(fileSystem, "GeneralVotes", "1", 'D', "group");
 
 
 
 
   // Lectura de votos
-  int votosGenerales = fileSystem->read("GeneralVotes", 'D', "group");
+  int votosGenerales = fileSystem->fileCount("GeneralVotes", 'D', "group");
   // int votosGenerales = votes->votesCount("GeneralVotes", 'D', "group");
   cout << "\nCantidad votos Generales: " << votosGenerales << endl;
 
 
-  int votos1 = fileSystem->read("JuanitoMora", 'D', "group");
-  //int votos1 = candidate->candidateVoteCount(fileSystem, "JuanitoMora", 'D', "group");
+  //int votos1 = fileSystem->fileCount("JuanitoMora", 'D', "group");
+  int votos1 = candidates->candidateVoteCount(fileSystem, "JuanitoMora", 'D', "group");
   cout << "Cantidad votos Juanito Mora: " << votos1 << endl;
    
     
-  int votos2 = fileSystem->read("EdgarSilva", 'D', "group");
-  //int votos2 = candidate->candidateVoteCount(fileSystem, "EdgarSilva", 'D', "group");
+  //int votos2 = fileSystem->fileCount("EdgarSilva", 'D', "group");
+  int votos2 = candidates->candidateVoteCount(fileSystem, "EdgarSilva", 'D', "group");
   cout << "Cantidad votos Edgar Silva: " << votos2 << endl;
 
 
-  int votos3 = fileSystem->read("MaritoMortadela", 'D', "group");
-  //int votos3 = candidate->candidateVoteCount(fileSystem, "MaritoMortadela", 'D', "group");
+  //int votos3 = fileSystem->fileCount("MaritoMortadela", 'D', "group");
+  int votos3 = candidates->candidateVoteCount(fileSystem, "MaritoMortadela", 'D', "group");
   cout << "Cantidad votos Marito Mortadela: " << votos3 << endl;
 
   //Eliminar archivos
