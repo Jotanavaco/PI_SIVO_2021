@@ -2,19 +2,20 @@
 #include "Src/includes/FileSystem.hpp"
 #include "Src/includes/Candidates.hpp"
 #include "Src/includes/Votes.hpp"
+#include "Src/includes/Census.hpp"
 
 using namespace std;
 
 int main() {
   FileSystem *fileSystem = new FileSystem();
   Candidates *candidates = new Candidates();
-  //Census *census = new Census();
+  Census *census = new Census();
   Votes *votes = new Votes();
 
 
   // Creacion de archivo del padrón
-  fileSystem->create("Census", 'D', "group");
-  //census->censusCreate(fileSystem, "Census", 'D', "group");
+  //fileSystem->create("Census", 'D', "group");
+  census->censusCreate(fileSystem, "Census", 'D', "group");
 
   
   // Abrir archivo padrón
@@ -22,19 +23,21 @@ int main() {
   //Might need a security class to manage this
   
 
+
+
   // Escritura del padrón (census)
-  fileSystem->addDataFromCensus("Docs/Census.txt", "Census", 'D', "group");
-  //Census->addDataFromCensus(fileSystem, "Docs/Census.txt", "Census", 'D', "group");
+  //fileSystem->addDataFromCensus("Docs/Census.txt", "Census", 'D', "group");
+  census->addDataFromCensus(fileSystem, "Docs/Census.txt", "Census", 'D', "group");
 
   // Actualización del padrón (escritura manual)
   /*Formato de ingreso; 101710541,301022, ,20300618,00000,DANIEL                        ,ROBLES                    ,VENEGAS              .f*/
-  fileSystem->append("Census", "Padron de prueba", 'D', "group");
-  //census->censusAppend(fileSystem, "Census", "Padron de prueba", 'D', "group");
+  //fileSystem->append("Census", "Padron de prueba", 'D', "group");
+  census->censusAppend(fileSystem, "Census", "Padron de prueba", 'D', "group");
 
 
   // Lectura del padrón (census)
-  stringstream datos = fileSystem->censusRead("Census", 'D', "group");
-  //stringstream datos = census->censusRead(fileSystem, "Census", 'D', "group");
+  //stringstream datos = fileSystem->read("Census", 'D', "group");
+  stringstream datos = census->censusRead(fileSystem, "Census", 'D', "group");
   cout << "\nCensus data: \n" << datos.str() << "\n";
 
 

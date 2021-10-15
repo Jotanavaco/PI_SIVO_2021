@@ -102,7 +102,7 @@ class FileSystem {
   void remove(string fileName, char user, string permission);
 
   /* If file exists and its open then reads all the data*/
-  stringstream censusRead(string fileName, char user, string permission);
+  stringstream read(string fileName, char user, string permission);
 
   /*returns count of elements in the file*/
   int fileCount(string fileName, char user, string permission);

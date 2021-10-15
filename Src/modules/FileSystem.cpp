@@ -289,7 +289,7 @@ void FileSystem::remove(string fileName, char user, string permission) {
 }
 
 /* If file exists and its open then reads all the data*/
-stringstream FileSystem::censusRead(string fileName, char user, string permission) { 
+stringstream FileSystem::read(string fileName, char user, string permission) { 
   stringstream returnData;
   int index;
   bool next = true;
