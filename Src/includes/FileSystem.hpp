@@ -1,3 +1,8 @@
+#ifndef FILESYSTEM_HPP
+#define FILESYSTEM_HPP
+
+
+
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -153,3 +158,5 @@ class FileSystem {
   void addDataFromCensus(string fileDirection, string fileName
   , char user, string permission);
 };
+
+#endif
